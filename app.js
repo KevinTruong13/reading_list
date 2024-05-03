@@ -11,7 +11,7 @@ const uri = process.env.MONGO_CONNECTION_STRING;
 const databaseAndCollection = { db: process.env.MONGO_DB_NAME, collection: process.env.MONGO_COLLECTION };
 const client = new MongoClient(uri, { serverApi: ServerApiVersion.v1 });
 
-const port = process.argv[2] || 3000;
+const port = process.env.PORT || 4000;
 
 app.set("views", path.resolve(__dirname, "templates"));
 app.set("view engine", "ejs");
