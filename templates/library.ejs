@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title><%= username %>'s Reading List</title>
+    <link rel="stylesheet" type="text/css" href="/styles/main.css" />
+</head>
+<body>
+    <div class="container">
+        <h1><%= username %>'s Reading List</h1>
+
+        <ul class="book-list">
+            <% books.forEach(book => { %>
+                <li class="book-item">
+                    <% if (book.coverImageUrl) { %>
+                        <img class="book-cover" src="<%= book.coverImageUrl %>" alt="Book Cover">
+                    <% } %>
+
+                    <div class="book-info">
+                        <strong>Title:</strong> <%= book.title %> <br>
+                        <strong>Author:</strong> <%= book.author %> <br>
+                        <strong>Pages:</strong> <%= book.pages %> <br>
+                        <strong>Published:</strong> <%= book.published %> <br>
+
+                        <form class="remove-form" action="/library/<%= username %>/remove" method="post">
+                            <input type="hidden" name="bookID" value="<%= book.title %>">
+                            <button type="submit">Remove</button>
+                        </form>
+                    </div>
+                </li>
+            <% }) %>
+        </ul>
+
+        <form class="add-form" action="/library/<%= username %>/add" method="post">
+            <label for="bookTitle">Add a book:</label>
+            <input type="text" id="bookTitle" name="bookTitle" required>
+            <button type="submit">Add</button>
+        </form>
+
+        <form class="clear-form" action="/library/<%= username %>/clear" method="post">
+            <button type="submit">Clear Library</button>
+        </form>
+    </div>
+</body>
+</html>
