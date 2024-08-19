@@ -1,12 +1,5 @@
 # Reading List Library
 
-## Submitted by:
-Kevin Truong (directory id: truongke)
-
-## Group Members:
-Kevin Truong (truongke)
-
-## App Description:
 Allows users to maintain a reading list library stored per user. Queries Open Library API to get book information.
 
 ## YouTube Video Link:
